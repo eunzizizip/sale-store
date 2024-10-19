@@ -1,0 +1,91 @@
+/* Signup.css */
+.page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f2f5;
+}
+
+.titleWrap {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.contentWrap {
+    width: 320px;
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.inputTitle {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.inputWrap {
+    margin-bottom: 20px;
+}
+
+.input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.input:focus {
+    border-color: #80bdff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.errorMessageWrap {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.bottomButton {
+    width: 100%;
+    padding: 12px;
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.bottomButton:disabled {
+    background-color: #c3e6cb;
+    cursor: not-allowed;
+}
+
+.bottomButton:hover:not(:disabled) {
+    background-color: #218838;
+}
+
+.signupButtonWrap {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.signupButtonWrap a {
+    color: #28a745;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.signupButtonWrap a:hover {
+    color: #218838;
+}
