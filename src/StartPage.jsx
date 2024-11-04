@@ -1,14 +1,55 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'; // useState, useEffect를 import
 import { useNavigate } from 'react-router-dom'; // 페이지 이동에 사용하는 훅
+import AddStoreForm from './AddStoreForm'; // 추가 폼 임포트
+import initialStores from './Stores'; // 매장 데이터 가져오기 (이름 변경)
 
 const StartPage = () => {
     const navigate = useNavigate(); // 페이지 이동에 사용하는 훅
+    const [stores, setStores] = useState(initialStores); // 초기 상태를 Stores.jsx로 설정
+
+    useEffect(() => {
+        // 서버로부터 매장 리스트 가져오기
+        fetch('http://localhost:5002/api/stores')
+            .then(response => response.json())
+            .then(data => {
+                console.log('가져온 매장 데이터:', data); // 데이터 확인
+                if (data.success) {
+                    setStores(data.stores); // 서버로부터 받은 데이터로 stores 상태 업데이트
+                }
+            })
+            .catch(error => {
+                console.error('매장 리스트 가져오기 오류:', error);
+            });
+    }, []); // 빈 배열을 의존성으로 전달하여 컴포넌트 마운트 시 한 번만 실행
 
     const goToLogin = () => {
         navigate('/login'); // '/login' 경로로 이동
     };
+
     const goToKakao = () => {
-        navigate('/kakao-map'); // '/kakao-map' 경로로 이동
+        navigate('/kakao-map', { state: { stores } }); // '/kakao-map' 경로로 이동, 상태 전달
+    };
+
+    const handleAddStore = (newStore) => {
+        // 서버에 새로운 매장을 추가하는 로직
+        fetch('/api/stores', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newStore),
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Store added:', data);
+                if (data.success) {
+                    // 새로운 매장을 추가한 후 리스트를 업데이트
+                    setStores(prevStores => [...prevStores, { ...newStore, id: data.storeId }]);
+                }
+            })
+            .catch((error) => {
+                console.error('Error adding store:', error);
+            });
     };
 
     return (
@@ -27,9 +68,17 @@ const StartPage = () => {
                 </div>
             </div>
 
-            {/* 메인 컨텐츠 (필요시 추가) */}
+            {/* 메인 컨텐츠 */}
             <div className="main-content">
-                {/* 여기에 메인 컨텐츠를 추가할 수 있습니다 */}
+                <h2>매장 리스트</h2>
+                <AddStoreForm onAddStore={handleAddStore} /> {/* 매장 추가 폼 사용 */}
+                <ul>
+                    {stores.map(store => (
+                        <li key={store.id}>
+                            {store.name}
+                        </li>
+                    ))}
+                </ul>
             </div>
         </div>
     );

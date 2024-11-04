@@ -28,7 +28,7 @@ const Login = () => {
 
     const onClickConfirmButton = async () => {
         try {
-            const response = await axios.post('http://localhost:5002/Login', {
+            const response = await axios.post('http://localhost:5002/api/Login', {
                 email: email,
                 password: password
             });

@@ -20,7 +20,7 @@ const dbConfig = {
 };
 
 // 회원가입 라우트
-app.post('/Signup', async (req, res) => {
+app.post('/api/Signup', async (req, res) => {
     const {username, email, password } = req.body;
 
     try {
@@ -49,7 +49,7 @@ app.post('/Signup', async (req, res) => {
 });
 
 // 로그인 라우트
-app.post('/Login', async (req, res) => {
+app.post('/api/Login', async (req, res) => {
     const { email, password } = req.body;
     try {
         console.log('db까지감');
@@ -77,11 +77,57 @@ app.post('/Login', async (req, res) => {
         // 연결 종료
         await connection.end();
     } catch (error) {
-        console('db 못감');
+        console.log('db 못감');
         console.error('로그인 중 오류 발생:', error);
         res.status(500).json({ success: false, message: '로그인에 실패했습니다.' });
     }
 });
+
+// 매장 추가 라우트
+app.post('/api/stores', async (req, res) => {
+    const { name, location, pickupTime, address, originalPrice, discountedPrice, imageUrl } = req.body;
+
+    try {
+        const connection = await mysql.createConnection(dbConfig);
+
+        // 매장 정보를 데이터베이스에 삽입
+        const [result] = await connection.execute(
+            'INSERT INTO stores (name, lat, lng, pickupTime, address, original_price, discounted_price, imageUrl) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', 
+            [name, location.lat, location.lng, pickupTime, address, originalPrice, discountedPrice, imageUrl]
+        );
+
+        await connection.end();
+
+        if (result.affectedRows > 0) {
+            //const storeId = result.insertId; 
+            res.json({ success: true, message: '매장이 성공적으로 추가되었습니다!' });
+        } else {
+            res.json({ success: false, message: '매장 추가에 실패했습니다.' });
+        }
+    } catch (error) {
+        console.error('매장 추가 중 오류 발생:', error);
+        res.status(500).json({ success: false, message: '매장 추가에 실패했습니다.', error: error.message });
+    }
+});
+
+// 매장 리스트 가져오기 라우트
+app.get('/api/stores', async (req, res) => {
+    try {
+        const connection = await mysql.createConnection(dbConfig);
+
+        // 모든 매장 정보를 조회
+        const [rows] = await connection.execute('SELECT * FROM stores');
+
+        await connection.end();
+        console.log('가져온 매장 리스트:', rows); // 데이터 확인
+        res.json({ success: true, stores: rows });
+    } catch (error) {
+        console.error('매장 리스트 조회 중 오류 발생:', error);
+        res.status(500).json({ success: false, message: '매장 리스트를 가져오는 데 실패했습니다.' });
+    }
+});
+
+
 
 // 서버 시작
 app.listen(port, () => {

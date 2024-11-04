@@ -37,7 +37,7 @@ const Signup = () => {
     const onClickSignupButton = async () => {
         if (pwMatch) {
             try {
-                const response = await axios.post('http://localhost:5002/Signup', {
+                const response = await axios.post('http://localhost:5002/api/Signup', {
                     username: username, // username 추가
                     email: email,
                     password: password
