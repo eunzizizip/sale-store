@@ -52,6 +52,11 @@ const StartPage = () => {
             });
     };
 
+    // 매장명을 클릭하면 상세 페이지로 이동하는 함수
+    const goToStoreDetail = (store) => {
+        navigate(`/store/${store.id}`, { state: { store } }); // state를 통해 매장 정보 전달
+    };
+
     return (
         <div className="start-page">
             <div className="header">
@@ -72,10 +77,13 @@ const StartPage = () => {
             <div className="main-content">
                 <h2>매장 리스트</h2>
                 <AddStoreForm onAddStore={handleAddStore} /> {/* 매장 추가 폼 사용 */}
-                <ul>
+                <ul className="store-list">
                     {stores.map(store => (
-                        <li key={store.id}>
-                            {store.name}
+                        <li key={store.id} className="store-item">
+                            {/* 매장 이름을 클릭하면 goToStoreDetail 함수 호출 */}
+                            <button onClick={() => goToStoreDetail(store)} className="store-name-button">
+                                {store.name}
+                            </button>
                         </li>
                     ))}
                 </ul>
