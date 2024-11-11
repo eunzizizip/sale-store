@@ -1,16 +1,18 @@
 // ReservationSummaryPage.jsx
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const ReservationSummaryPage = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+    const { store } = location.state; // StoreDetailPage에서 전달된 매장 정보
 
     const goBack = () => {
         navigate(-1); // 이전 페이지로 돌아가기
     };
 
     const goToNext = () => {
-        alert("다음 페이지로 이동합니다."); // 다음 페이지로 이동하는 기능 추가 가능
+        navigate("/details", { state: { store } }); // 상세 페이지로 이동
     };
 
     return (

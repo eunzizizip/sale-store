@@ -84,6 +84,10 @@ const StartPage = () => {
                             <button onClick={() => goToStoreDetail(store)} className="store-name-button">
                                 {store.name}
                             </button>
+                              {/* 이미지 표시 부분 추가 */}
+                            {store.imageUrl && (
+                                <img src={store.imageUrl} alt={`${store.name} 이미지`} className="store-image" />
+                            )}
                         </li>
                     ))}
                 </ul>

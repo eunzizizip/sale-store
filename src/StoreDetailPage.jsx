@@ -8,7 +8,7 @@ const StoreDetailPage = () => {
     const { store } = location.state; // StartPage에서 전달된 매장 정보
 
     const goToReservationSummary = () => {
-        navigate('/reservation-summary'); // 예약 요약 페이지로 이동
+        navigate('/reservation-summary', { state: { store } }); // 예약 요약 페이지로 이동
     };
 
     return (
