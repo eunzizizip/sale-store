@@ -7,6 +7,7 @@ import Signup from './Signup'; // 회원가입 페이지
 import StoreDetailPage from './StoreDetailPage'; // 새로 만들 상세 페이지 컴포넌트
 import ReservationSummaryPage from './ReservationSummaryPage'; // 예약 요약 페이지
 import ReservationDetailPage from './ReservationDetailPage';
+import PaymentPage from './PaymentPage';
 
 const App = () => {
     return (
@@ -19,6 +20,7 @@ const App = () => {
                 <Route path="/store/:id" element={<StoreDetailPage />} /> {/* 매장 상세 페이지 라우트 */}
                 <Route path="/reservation-summary" element={<ReservationSummaryPage />} /> {/* 예약 요약 페이지 */}
                 <Route path="/details" element={<ReservationDetailPage />} />
+                <Route path="/payment" element={<PaymentPage />} />
             </Routes>
         </Router>
     );

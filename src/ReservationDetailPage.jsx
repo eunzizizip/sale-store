@@ -26,11 +26,16 @@ const ReservationDetailPage = () => {
     // 뒤로 가기 함수
     const goBack = () => navigate(-1);
 
+    // "다음" 버튼 클릭 시 결제 페이지로 이동하는 함수
+    const goToPaymentPage = () => {
+        navigate('/payment', { state: { totalPrice } }); // `totalPrice` 전달
+    };
+
     return (
         <div className="reservation-detail-page">
             <h2>구매 상세 정보</h2>
             <div className="reservation-details">
-                <p><strong>매장명:</strong> {store.name}</p>
+                <p><strong>{store.name}</strong></p>
                 <p><strong>픽업 시간:</strong> {store.pickupTime}</p>
                 <p><strong>가격:</strong> {pricePerItem.toLocaleString()}원 (개당)</p>
             </div>
@@ -47,6 +52,7 @@ const ReservationDetailPage = () => {
 
             <div className="button-group">
                 <button onClick={goBack} className="back-button">이전</button>
+                <button onClick={goToPaymentPage} className="next-button">다음</button>
             </div>
         </div>
     );
