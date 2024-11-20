@@ -80,14 +80,16 @@ const StartPage = () => {
                 <ul className="store-list">
                     {stores.map(store => (
                         <li key={store.id} className="store-item">
+                            <img src={store.imageUrl} alt={`${store.name} 이미지`} className="store-image" />
                             {/* 매장 이름을 클릭하면 goToStoreDetail 함수 호출 */}
                             <button onClick={() => goToStoreDetail(store)} className="store-name-button">
                                 {store.name}
                             </button>
-                              {/* 이미지 표시 부분 추가 */}
-                            {store.imageUrl && (
-                                <img src={store.imageUrl} alt={`${store.name} 이미지`} className="store-image" />
-                            )}
+                            <span className="store-price">
+                                {store.discounted_price ? `${store.discounted_price}원` : '가격 정보 없음'}
+                            </span>
+                            
+                            
                         </li>
                     ))}
                 </ul>

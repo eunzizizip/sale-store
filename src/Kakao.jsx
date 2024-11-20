@@ -35,8 +35,8 @@ function Kakao(){
 
     return (
         <div id = "map" style = {{
-            width: '600px',
-            height: '600px'
+            width: '1500px',
+            height: '500px'
         }}> </div>
     )
 }

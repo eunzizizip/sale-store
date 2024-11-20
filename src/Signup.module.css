@@ -1,22 +1,35 @@
 /* Signup.css */
+
 .page {
+    position: absolute;
+    top: 0;
+    bottom:0;
+    width: 100%;
+    max-width: 500px;
+    padding: 0 20px;
+  
+    left: 50%;
+    transform: translate(-50%, 0);
+  
+    background-color: #F7F7F7;
+  
+    overflow: hidden;
+  
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f2f5;
-}
+    flex-direction: column;
+  }
 
 .titleWrap {
-    font-size: 24px;
-    font-weight: bold;
+    margin-top: 87px;
+    font-size: 26px;
+    font-weight: 700;
+    color: #262626;
     text-align: center;
-    margin-bottom: 20px;
-    color: #333;
 }
 
 .contentWrap {
-    width: 320px;
+    margin-top: 26px;
+    flex: 1;
     background: white;
     padding: 40px;
     border-radius: 8px;
@@ -24,55 +37,60 @@
 }
 
 .inputTitle {
-    font-size: 14px;
-    color: #333;
+    font-size: 12px;
+    font-weight: 600;
+    color: #262626;
     margin-bottom: 8px;
 }
 
 .inputWrap {
-    margin-bottom: 20px;
+    display: flex;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 8px;
+    background-color: white;
+    border: 1px solid gray;
+}
+
+.inputWrap:focus-within {
+    border: 1px solid green;
 }
 
 .input {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    outline: none;
+    border: none;
+    height: 17px;
     font-size: 14px;
-    box-sizing: border-box;
+    font-weight: 400;
 }
 
-.input:focus {
-    border-color: #80bdff;
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+.input::placeholder {
+    color: #dadada;
 }
 
 .errorMessageWrap {
     color: red;
     font-size: 12px;
-    margin-top: 5px;
+    margin-top: 8px;
 }
 
 .bottomButton {
     width: 100%;
-    padding: 12px;
-    background-color: #28a745;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
+    height: 48px;
     border: none;
-    border-radius: 4px;
+    font-weight: 700;
+    background-color: green;
+    border-radius: 64px;
+    color: #F7F7F7;
+    margin-top: auto;
+    margin-bottom: 20px; /* 페이지 하단과 여백 */
     cursor: pointer;
 }
 
 .bottomButton:disabled {
-    background-color: #c3e6cb;
-    cursor: not-allowed;
-}
-
-.bottomButton:hover:not(:disabled) {
-    background-color: #218838;
+    background-color: #dadada;
+    color: white;
 }
 
 .signupButtonWrap {
@@ -81,7 +99,7 @@
 }
 
 .signupButtonWrap a {
-    color: #28a745;
+    color: green;
     text-decoration: underline;
     cursor: pointer;
 }
