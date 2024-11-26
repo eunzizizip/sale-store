@@ -16,21 +16,34 @@ function Kakao(){
             level: 3
         };
         const map = new kakao.maps.Map(container, options);
+        const geocoder = new kakao.maps.services.Geocoder(); // Geocoder 객체 생성
 
         stores.forEach(store => {
-            const markerPosition = new kakao.maps.LatLng(store.lat, store.lng);
-            const marker = new kakao.maps.Marker({
-                position: markerPosition
-            });
-            marker.setMap(map);
+            // 주소를 좌표로 변환
+            geocoder.addressSearch(store.address, (result, status) => {
+                if (status === kakao.maps.services.Status.OK) {
+                    const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
-            const infowindow = new kakao.maps.InfoWindow({
-                content: `<div style="padding:5px;">${store.name}</div>`
+                    // 마커 생성
+                    const marker = new kakao.maps.Marker({
+                        map: map,
+                        position: coords
+                    });
+
+
+                    const infowindow = new kakao.maps.InfoWindow({
+                        content: `<div style="padding:5px;">${store.name}</div>`
+                    });
+
+                    // 마커 이벤트 추가
+                    kakao.maps.event.addListener(marker, 'mouseover', () => infowindow.open(map, marker));
+                    kakao.maps.event.addListener(marker, 'mouseout', () => infowindow.close());
+                } else {
+                    console.error(`Failed to search address: ${store.address}`);
+                }
             });
-            kakao.maps.event.addListener(marker, 'mouseover', () => infowindow.open(map, marker));
-            kakao.maps.event.addListener(marker, 'mouseout', () => infowindow.close());
         });
-
+        
     }, [stores])
 
     return (

@@ -1,0 +1,149 @@
+/* StoreDetailPage 전체 스타일 */
+.store-detail-page {
+    font-family: 'EF_jejudoldam', Arial, sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* 상단 이미지 컨테이너 */
+.store-image-container {
+    width: 100%;
+    max-height: 300px; /* 이미지 최대 높이 */
+    overflow: hidden; /* 이미지가 컨테이너를 벗어나지 않도록 */
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+}
+
+.store-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* 이미지가 비율을 유지하며 컨테이너에 맞게 */
+}
+
+
+.store-detail-page h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* 탭 메뉴 스타일 */
+.tab-menu {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.tab-menu button {
+    background-color: #87ceeb;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-menu button:hover {
+    background-color: #5fb7e5;
+}
+
+.tab-menu button.active {
+    background-color: #f98fdd5a;
+    color: #333;
+}
+
+/* 탭 내용 */
+.tab-content {
+    width: 100%;
+    max-width: 800px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* 가게 정보 섹션 */
+.store-info p {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #555;
+}
+
+/* 예약 버튼 */
+.reservation-button {
+    display: block;
+    margin-top: 20px;
+    background-color: #87ceeb;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.reservation-button:hover {
+    background-color: #5fb7e5;
+}
+
+/* 리뷰 섹션 */
+.store-reviews {
+    margin-top: 20px;
+}
+
+.store-reviews h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.review {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.review p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.review p strong {
+    color: #333;
+    font-weight: bold;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .tab-menu {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tab-menu button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .tab-content {
+        padding: 15px;
+    }
+
+    .store-info p, .review p {
+        font-size: 16px;
+    }
+}

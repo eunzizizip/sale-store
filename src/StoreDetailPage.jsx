@@ -16,6 +16,14 @@ const StoreDetailPage = () => {
 
     return (
         <div className="store-detail-page">
+            {/* 상단 이미지 섹션 */}
+            <div className="store-image-container">
+                <img
+                    src={store.imageUrl || '/default-store.jpg'} // 가게 이미지 또는 기본 이미지
+                    alt={store.name}
+                    className="store-image"
+                />
+            </div>
             <h2>{store.name}</h2>
             <div className="tab-menu">
                 {/* 탭 버튼 */}
