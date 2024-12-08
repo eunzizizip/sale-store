@@ -25,6 +25,7 @@
     width: 100%;
     height: auto;
     object-fit: cover; /* 이미지가 비율을 유지하며 컨테이너에 맞게 */
+    object-position: center; /* 이미지를 중앙으로 배치 */
 }
 
 

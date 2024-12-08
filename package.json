@@ -50,6 +50,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "proxy":"http://localhost:5002",
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
     "@types/cors": "^2.8.17"

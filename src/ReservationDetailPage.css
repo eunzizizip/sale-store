@@ -1,0 +1,139 @@
+@font-face {
+    font-family: 'EF_jejudoldam';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-EF@1.0/EF_jejudoldam.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 전체 페이지 스타일 */
+.reservation-detail-page {
+    font-family: 'EF_jejudoldam', Arial, sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* 제목 스타일 */
+.reservation-detail-page h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: 'EF_jejudoldam'; 
+}
+
+/* 상세 정보 텍스트 스타일 */
+.reservation-details p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* 수량 조절 버튼 */
+.quantity-control {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.quantity-control button {
+    background-color: #87ceeb;
+    color: #ffffff;
+    padding: 10px;
+    font-size: 18px;
+    border: 2px solid #87ceeb;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 버튼 호버 스타일 */
+.quantity-control button:hover {
+    background-color: #5fb7e5;
+    color: #333;
+    border-color: #5fb7e5;
+}
+
+/* 수량 텍스트 */
+.quantity {
+    margin: 0 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* 총 가격 */
+.total-price p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* 버튼 그룹 */
+.button-group {
+    display: flex;
+    gap: 20px;
+}
+
+/* 이전 버튼 */
+.back-button, .next-button {
+    background-color: #87ceeb;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid #87ceeb;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 버튼 호버 스타일 */
+.back-button:hover, .next-button:hover {
+    background-color: #5fb7e5;
+    color: #333;
+    border-color: #5fb7e5;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .reservation-detail-page {
+        padding: 10px;
+    }
+
+    .reservation-detail-page h2 {
+        font-size: 20px;
+    }
+
+    .reservation-details p,
+    .total-price p {
+        font-size: 16px;
+    }
+
+    .quantity-control {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .quantity-control button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .quantity {
+        margin: 10px 0;
+    }
+
+    .button-group {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .back-button, .next-button {
+        width: 100%;
+        text-align: center;
+    }
+}

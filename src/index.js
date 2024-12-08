@@ -1,5 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import './PaymentPage.css';
+import './ReservationDetailPage.css';
+import './ReservationSummaryPage.css';
 import './StoreDetailPage.css';
 import './StartPage.css';
 import './index.css';
